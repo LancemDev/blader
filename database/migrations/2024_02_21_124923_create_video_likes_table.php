@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('video_likes', function (Blueprint $table) {
             $table->id();
+            $table->morphs('likeable');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->enum('type', ['like', 'dislike']);
             $table->timestamps();
+
+            $table->unique(['user_id', 'likeable_id', 'likeable_type', 'type']);
         });
     }
 

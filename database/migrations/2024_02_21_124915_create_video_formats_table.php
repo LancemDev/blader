@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('video_formats', function (Blueprint $table) {
             $table->id();
+            $table->string('quality');
+            $table->string('file_path');
+            $table->foreignId('video_id')->constrained('videos')->cascadeOnDelete();
             $table->timestamps();
         });
     }

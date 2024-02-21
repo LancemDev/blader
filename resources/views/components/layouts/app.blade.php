@@ -54,8 +54,9 @@
                 <x-mary-menu-item title="Trending" link="/trending" icon="o-fire" />
                 <x-mary-menu-item title="Recommendations" link="/recommendations" icon="o-star" />
                 <x-mary-menu-sub title="Settings" icon="o-cog-6-tooth">
-                    <x-mary-menu-item title="Logout" icon="o-wifi" />
-                    <x-mary-menu-item title="Archives" icon="o-archive-box" />
+                    @livewire('logout')
+                    <x-mary-menu-item title="Logout" icon="o-wifi" wire:click="logout" />
+                    
                 </x-mary-menu-sub>
             </x-mary-menu>
         </x-slot:sidebar>

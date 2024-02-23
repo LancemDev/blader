@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Livewire\Component;
 
-class Chat extends Component
+class Chatty extends Component
 {
     public $message;
     public $loading = false;
@@ -16,10 +16,7 @@ class Chat extends Component
         // Here you can send the message to the server and get the response
         $client = new \GuzzleHttp\Client();
         $response = $client->request('POST', 'https://mksu-examflow.vercel.app/message', [
-            'headers' => [
-                'Content-Type' => 'application/json',
-            ],
-            'json' => [
+            'form_params' => [
                 'message' => $this->message
             ]
         ]);
@@ -27,13 +24,12 @@ class Chat extends Component
         $responseBody = json_decode($response->getBody(), true);
     
         // Set the response to the message variable
-        $this->message = $responseBody['response'];
+        $this->message = $responseBody['message'];
     
         $this->loading = false;
     }
-
     public function render()
     {
-        return view('livewire.chat');
+        return view('livewire.chatty');
     }
 }

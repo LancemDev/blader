@@ -76,7 +76,7 @@
 
     {{-- MODALS --}}
     @livewire('upload-video')
-    @livewire('chat')
+    @livewire('chatty')
 
     {{-- FOOTER --}}
 </body>

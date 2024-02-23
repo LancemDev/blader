@@ -23,6 +23,7 @@
         <x-slot:actions>
             <x-mary-button label="Upload Video" onclick="modal17.showModal()" @click="$wire.drawer = true" responsive icon="o-funnel" class="btn-primary" />
         </x-slot:actions>
+        
     </x-mary-header>
 </head>
 <body class="min-h-screen font-sans antialiased bg-base-200/50 dark:bg-base-200">
@@ -58,11 +59,15 @@
                 <x-mary-menu-item title="Recommendations" link="/recommendations" icon="o-star" />
                 <x-mary-menu-sub title="More" icon="o-cog-6-tooth">
                     <x-mary-menu-item title="AI Assistant" onclick="modal20.showModal()" icon="o-star" />
+                    <x-mary-menu-item title="theme" icon="o-moon" @click="$dispatch('toggle-theme')" />
                     @livewire('logout')
                     <x-mary-menu-item title="Logout" icon="o-wifi" wire:click="logout" />
                 </x-mary-menu-sub>
             </x-mary-menu>
         </x-slot:sidebar>
+
+        {{-- Theme toggle --}}
+        <x-mary-theme-toggle class="hidden"/>
 
         {{-- The `$slot` goes here --}}
         <x-slot:content>

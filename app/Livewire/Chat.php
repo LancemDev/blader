@@ -12,23 +12,25 @@ class Chat extends Component
     public function sendMessage()
     {
         $this->loading = true;
-    
-        // Here you can send the message to the server and get the response
-        $client = new \GuzzleHttp\Client();
-        $response = $client->request('POST', 'https://mksu-examflow.vercel.app/message', [
-            'headers' => [
-                'Content-Type' => 'application/json',
-            ],
-            'json' => [
-                'message' => $this->message
+
+        // Prepare the HTTP request
+        $opts = [
+            'http' => [
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/json', // Set content type to JSON
+                'content' => json_encode(['message' => $this->message]), // Encode message as JSON
             ]
-        ]);
-    
-        $responseBody = json_decode($response->getBody(), true);
-    
-        // Set the response to the message variable
-        $this->message = $responseBody['response'];
-    
+        ];
+
+        
+
+        // Create a stream context
+        $context  = stream_context_create($opts);
+
+        // Send the request and get the response
+        $response = file_get_contents('https://mksu-examflow.vercel.app/message', false, $context);
+
+
         $this->loading = false;
     }
 

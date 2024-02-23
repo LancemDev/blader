@@ -13,18 +13,27 @@ class Chatty extends Component
     {
         $this->loading = true;
     
-        // Here you can send the message to the server and get the response
-        $client = new \GuzzleHttp\Client();
-        $response = $client->request('POST', 'https://mksu-examflow.vercel.app/message', [
-            'form_params' => [
-                'message' => $this->message
+        // Prepare the HTTP request
+        $opts = [
+            'http' => [
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/json', // Set content type to JSON
+                'content' => json_encode(['message' => $this->message]), // Encode message as JSON
             ]
-        ]);
+        ];
     
-        $responseBody = json_decode($response->getBody(), true);
+        // Create a stream context
+        $context  = stream_context_create($opts);
+    
+        // Send the request and get the response
+        $response = file_get_contents('https://mksu-examflow.vercel.app/message', false, $context);
+    
+        // Decode the response
+        $responseBody = json_decode($response, true);
     
         // Set the response to the message variable
-        $this->message = $responseBody['message'];
+        $this->message = $responseBody['response'];
+        // dd($responseBody['response']);
     
         $this->loading = false;
     }

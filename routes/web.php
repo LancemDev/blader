@@ -6,6 +6,8 @@ use App\Livewire\Counter;
 use App\Livewire\Home;
 use App\Livewire\Recommendations;
 use App\Livewire\Trending;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +24,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/counter', Counter::class);
+Route::post('/message', [MessageController::class, 'sendMessage']);
+
 Route::get('/home', Home::class)->middleware(['auth', 'verified'])->name('home');
 Route::get('/dashboard', Home::class)->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/trending', Trending::class)->middleware(['auth', 'verified'])->name('trending');
 Route::get('/recommendations', Recommendations::class)->middleware(['auth', 'verified'])->name('recommendations');
+Route::post('/video/upload', [VideoController::class, 'store'])->middleware(['auth', 'verified'])->name('video.upload');
 
 // Route::get('/dashboard', Counter::class);
 

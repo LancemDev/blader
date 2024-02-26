@@ -13,17 +13,23 @@
 
 
     {{-- HEADER --}}
-    <x-mary-header separator progress-indicator>
-        <x-slot:brand>
-            <x-mary-icon name="o-envelope" class="p-5 pt-3" />
-        </x-slot:brand>
-        <x-slot:middle class="!justify-end">
-            <x-mary-input placeholder="Search..." wire:model.live.debounce="search" clearable icon="o-magnifying-glass" />
-        </x-slot:middle>
-        <x-slot:actions>
-            <x-mary-button label="Upload Video" onclick="modal17.showModal()" @click="$wire.drawer = true" responsive icon="o-funnel" class="btn-primary" />
-        </x-slot:actions>
-    </x-mary-header>
+    @if($user = auth()->user())
+    <x-mary-list-item :item="$user" sub-value="username" no-separator no-hover class="ml-3" style="font-size: 1.5em; text-align: right;"></x-mary-list-item>
+    @endif
+
+        <x-mary-header separator progress-indicator>
+            <x-slot:brand>
+                <x-mary-icon name="o-envelope" class="p-5 pt-3" />
+            </x-slot:brand>
+            
+            <x-slot:actions>
+                <x-mary-button label="Upload Video" onclick="modal17.showModal()" @click="$wire.drawer = true" responsive icon="o-funnel" class="btn-primary" />
+            </x-slot:actions>
+        </x-mary-header>
+  
+
+
+
 </head>
 <body class="min-h-screen font-sans antialiased bg-base-200/50 dark:bg-base-200">
 
@@ -44,15 +50,7 @@
             {{-- MENU --}}
             <x-mary-menu activate-by-route>
 
-                {{-- User --}}
-                @if($user = auth()->user())
-                    <x-mary-list-item :item="$user" sub-value="username" no-separator no-hover class="!-mx-2 mt-2 mb-5 border-y border-y-sky-900">
-                        <x-slot:actions>
-                            <x-mary-button icon="o-power" class="btn-circle btn-ghost btn-xs" tooltip-left="logoff" />
-                        </x-slot:actions>
-                    </x-mary-list-item>
-                @endif
-
+                {{-- Menu items --}}
                 <x-mary-menu-item title="Home" link="/home" icon="o-home" />
                 <x-mary-menu-item title="Trending" link="/trending" icon="o-fire" />
                 <x-mary-menu-item title="Recommendations" link="/recommendations" icon="o-star" />

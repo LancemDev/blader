@@ -1,34 +1,45 @@
 <?php
+namespace App\Http\Livewire;
 
-namespace App\Livewire;
-
-use App\Jobs\EncodeVideo;
-use App\Jobs\GenerateThumbnail;
-use App\Livewire\Forms\UploadVideoForm;
-use App\Models\Video;
-use App\Models\VideoFormat;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Str;
-use Livewire\Attributes\On;
 use Livewire\Component;
-use Livewire\Attributes\Validate;
+use Livewire\WithFileUploads;
+use App\Models\Video;
 
 class UploadVideo extends Component
 {
-    public $file;
-    #[Validate('required', 'max:255')]
-    public $title;
-    #[Validate('required', 'max:255')]
-    public $description;
-    public array $tags = [];
-    #[On('fileChanged')]
-    public $video;
-    public bool $loading = false;
-    public bool $uploaded = false;
+    use WithFileUploads;
 
-    // Get the original file path
+    public $title;
+    public $description;
+    public $tags;
+    public $file;
+    public $thumbnail;
+    public bool $myModal = false;
+
+    protected $rules = [
+        'title' => 'required',
+        'description' => 'required',
+        'tags' => 'required',
+    ];
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
+    public function upload()
+    {
+        $validatedData = $this->validate();
+
+        $validatedData['file'] = $this->file->store('videos', 'public');
+        $validatedData['thumbnail'] = $this->thumbnail->store('thumbnails', 'public');
+
+        Video::create($validatedData);
+
+        $this->reset(['title', 'description', 'tags', 'file', 'thumbnail', 'showModal']);
+
+        session()->flash('message', 'Video uploaded successfully.');
+    }
 
     public function render()
     {

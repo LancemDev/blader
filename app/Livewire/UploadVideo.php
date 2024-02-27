@@ -4,41 +4,22 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Video;
+use App\Livewire\Forms\UploadVideoForm as Form;
 
 class UploadVideo extends Component
 {
     use WithFileUploads;
 
-    public $title;
-    public $description;
-    public $tags;
-    public $file;
-    public $thumbnail;
-    public bool $myModal = false;
+    public Form $form;
 
-    protected $rules = [
-        'title' => 'required',
-        'description' => 'required',
-        'tags' => 'required',
-    ];
-
-    public function updated($propertyName)
+    public function save()
     {
-        $this->validateOnly($propertyName);
-    }
-
-    public function upload()
-    {
-        $validatedData = $this->validate();
-
-        $validatedData['file'] = $this->file->store('videos', 'public');
-        $validatedData['thumbnail'] = $this->thumbnail->store('thumbnails', 'public');
-
-        Video::create($validatedData);
-
-        $this->reset(['title', 'description', 'tags', 'file', 'thumbnail', 'showModal']);
-
-        session()->flash('message', 'Video uploaded successfully.');
+        $this->validate();
+        // get the original file path
+        $this->form->original_file_path = $this->form->video->store('videos', 'public');
+        // get the thumbnail path
+        $this->form->thumbnail_path = $this->form->thumbnail->store('thumbnails', 'public');
+        $this->form->submit();
     }
 
     public function render()

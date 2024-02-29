@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Counter;
+use App\Livewire\SnackRequest;
 use App\Livewire\Home;
 use App\Livewire\Recommendations;
 use App\Livewire\Trending;
@@ -25,6 +26,7 @@ Route::get('/', function () {
 });
 
 Route::get('/counter', Counter::class);
+Route::get('/snacks', SnackRequest::class);
 Route::post('/message', [MessageController::class, 'sendMessage']);
 
 Route::get('/home', Home::class)->middleware(['auth', 'verified'])->name('home');

@@ -17,12 +17,15 @@
         <x-slot:brand>
             <x-mary-icon name="o-envelope" class="p-5 pt-3" />
         </x-slot:brand>
-        <x-slot:middle class="!justify-end">
-            <x-mary-input placeholder="Search..." wire:model.live.debounce="search" clearable icon="o-magnifying-glass" />
-        </x-slot:middle>
         <x-slot:actions>
+        @if($user = auth()->user())
+                <x-mary-list-item :item="$user" sub-value="username" no-separator no-hover class="!-mx-2 mt-2 mb-5 border-y border-y-sky-900">
+                    {{ $user->name }}
+                </x-mary-list-item>
+            @endif
             <x-mary-button label="Upload Video" onclick="modal17.showModal()" @click="$wire.drawer = true" responsive icon="o-funnel" class="btn-primary" />
         </x-slot:actions>
+        
     </x-mary-header>
 </head>
 <body class="min-h-screen font-sans antialiased bg-base-200/50 dark:bg-base-200">
@@ -45,24 +48,21 @@
             <x-mary-menu activate-by-route>
 
                 {{-- User --}}
-                @if($user = auth()->user())
-                    <x-mary-list-item :item="$user" sub-value="username" no-separator no-hover class="!-mx-2 mt-2 mb-5 border-y border-y-sky-900">
-                        <x-slot:actions>
-                            <x-mary-button icon="o-power" class="btn-circle btn-ghost btn-xs" tooltip-left="logoff" />
-                        </x-slot:actions>
-                    </x-mary-list-item>
-                @endif
 
                 <x-mary-menu-item title="Home" link="/home" icon="o-home" />
                 <x-mary-menu-item title="Trending" link="/trending" icon="o-fire" />
                 <x-mary-menu-item title="Recommendations" link="/recommendations" icon="o-star" />
                 <x-mary-menu-sub title="More" icon="o-cog-6-tooth">
                     <x-mary-menu-item title="AI Assistant" onclick="modal20.showModal()" icon="o-star" />
+                    <x-mary-menu-item title="theme" icon="o-moon" @click="$dispatch('toggle-theme')" />
                     @livewire('logout')
                     <x-mary-menu-item title="Logout" icon="o-wifi" wire:click="logout" />
                 </x-mary-menu-sub>
             </x-mary-menu>
         </x-slot:sidebar>
+
+        {{-- Theme toggle --}}
+        <x-mary-theme-toggle class="hidden"/>
 
         {{-- The `$slot` goes here --}}
         <x-slot:content>
@@ -79,5 +79,15 @@
     @livewire('chatty')
 
     {{-- FOOTER --}}
+
+
+        {{-- dd(session('success')) --}}
+        @if(session('success'))
+            <x-mary-toast type="success" title="Video uploaded successfully" />
+        @elseif(session('error'))
+            <x-mary-toast type="error" title="Video upload failed" />
+        @endif
+
+
 </body>
 </html>

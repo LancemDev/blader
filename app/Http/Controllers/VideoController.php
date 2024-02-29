@@ -3,18 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Video;
 
 class VideoController extends Controller
 {
     public function store(Request $request)
     {
-        $request->validate([
-            'video' => 'required|mimes:mp4|max:102400',
+        $success = false;
+        // Store the thumbnail in the thumbnails folder
+        $thumbnail_path = $request->thumbnail->store('thumbnails', 'public');
+        // Store the video in the videos folder
+        $original_file_path = $request->video->store('videos', 'public');
+        // get the user id
+        $user_id = auth()->user()->id;
+
+        // Create a new video
+        $video = Video::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'original_file_path' => $original_file_path,
+            'thumbnail_path' => $thumbnail_path,
+            'user_id' => $user_id,
+            'tags' => $request->tags,
         ]);
 
-        $request->file('video')->store('videos');
+        if ($video) {
+            $success = true;
+        }
 
-        return back()
-            ->with('success', 'Video uploaded successfully.');
+        return redirect()->route('home')->with('success', $success);
     }
 }

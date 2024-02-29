@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username',
+        'banner_image',
+        'channel_description',
     ];
 
     /**
@@ -42,4 +45,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
+    }
+
+    public function totalViews(): int
+    {
+        return $this->videos->sum(function ($video) {
+            return $video->views->count();
+        });
+    }
+
 }

@@ -1,20 +1,22 @@
 <?php
-
-namespace App\Livewire;
+namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Models\Video;
+use App\Livewire\Forms\UploadVideoForm as Form;
+// use Mary\Traits\Toast;
 
 class UploadVideo extends Component
 {
     use WithFileUploads;
-    public $file;
 
-    public function updatedFile()
+    public Form $form;
+
+    public function submitForm()
     {
-        $this->validate([
-            'file' => 'required|max:10240',
-        ]);
+        $this->validate();
+        $this->form->submit();
     }
 
     public function render()

@@ -14,12 +14,11 @@ return new class extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
-            $table->uuid()->unique();
             $table->string('title');
             $table->string('description')->nullable();
-            $table->string('originial_file_path')->nullable();
+            $table->string('original_file_path')->nullable();
             $table->string('thumbnail_path')->nullable();
-            $table->string('vtt_file')->nullable();
+            // $table->string('vtt_file')->nullable();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->boolean('processed')->default(false);
             $table->timestamp('live_at')->nullable();

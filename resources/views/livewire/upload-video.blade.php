@@ -3,7 +3,7 @@
         <form id="uploadForm" wire:submit="submitForm" action="{{ route('video.upload') }}" method="POST" enctype="multipart/form-data">
         @csrf
             <x-slot:actions>
-                <x-mary-button label="Cancel" class="btn-ghost" />
+                <x-mary-button label="Cancel" onclick="modal17.close()" class="btn-ghost" />
                 <button type="submit" name="submit" value="Submit" class="btn-ghost rounded" onclick="document.getElementById('uploadForm').submit()">Submit</button>
            </x-slot:actions>
            <x-mary-file wire:model="photo2" name="thumbnail" accept="image/png" crop-after-change>

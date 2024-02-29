@@ -1,22 +1,22 @@
 <div>
     <x-mary-modal id="modal17">
-        <form wire:submit="save">
+        <form id="uploadForm" wire:submit="submitForm" action="{{ route('video.upload') }}" method="POST" enctype="multipart/form-data">
+        @csrf
             <x-slot:actions>
-                <x-mary-button label="Cancel" onclick="modal17.close()" class="btn-ghost" spinner="save" />
-                <x-mary-button class="btn-primary" type="submit" >Upload</x-mary-button>
-            </x-slot:actions>
-
-            <x-mary-file wire:model="form.thumbnail" accept="image/png" crop-after-change>
-                <img src="{{ asset('thumbnails/placeholder.jpeg') }}" alt="Thumbnail" class="w-full h-48 object-cover" />
+                <x-mary-button label="Cancel" class="btn-ghost" />
+                <button type="submit" name="submit" value="Submit" class="btn-ghost rounded" onclick="document.getElementById('uploadForm').submit()">Submit</button>
+           </x-slot:actions>
+           <x-mary-file wire:model="photo2" name="thumbnail" accept="image/png" crop-after-change>
+                <img src="{{ $user->avatar ?? asset('thumbnails/placeholder.jpeg') }}" class="h-40 rounded-lg" />
             </x-mary-file>
+
+           <x-mary-file wire:model="file" name="video" label="Receipt" hint="Click to upload video" />
+
+            <x-mary-input wire:model="title" name="title" label="Title" placeholder="Title" />
             <br />
-            <x-mary-file wire:model="form.video" label="" hint="Only Video" />
+            <x-mary-input wire:model="description" name="description" label="Description" placeholder="Description" />
             <br />
-            <x-mary-input wire:model="form.title" label="Title" placeholder="Title" />
-            <br />
-            <x-mary-input wire:model="form.description" label="Description" placeholder="Description" />
-            <br />
-            <x-mary-tags wire:model="form.tags" label="Click ot enter tag(s)" hint="Hint: Hit enter to create a new tag" />
+            <x-mary-tags wire:model="tags" name="tags" label="Click ot enter tag(s)" hint="Hint: Hit enter to create a new tag" />
             <br />
         </form>
     </x-mary-modal>

@@ -5,6 +5,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Video;
 use App\Livewire\Forms\UploadVideoForm as Form;
+// use Mary\Traits\Toast;
 
 class UploadVideo extends Component
 {
@@ -12,13 +13,9 @@ class UploadVideo extends Component
 
     public Form $form;
 
-    public function save()
+    public function submitForm()
     {
         $this->validate();
-        // get the original file path
-        $this->form->original_file_path = $this->form->video->store('videos', 'public');
-        // get the thumbnail path
-        $this->form->thumbnail_path = $this->form->thumbnail->store('thumbnails', 'public');
         $this->form->submit();
     }
 

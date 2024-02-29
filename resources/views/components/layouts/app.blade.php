@@ -23,7 +23,7 @@
                     {{ $user->name }}
                 </x-mary-list-item>
             @endif
-            <x-mary-button label="Upload Video" onclick="modal17.showModal()" @click="$wire.drawer = true" responsive icon="o-funnel" class="btn-primary" spinner />
+            <x-mary-button label="Upload Video" onclick="modal17.showModal()" @click="$wire.drawer = true" responsive icon="o-funnel" class="btn-primary" />
         </x-slot:actions>
         
     </x-mary-header>
@@ -79,5 +79,15 @@
     @livewire('chatty')
 
     {{-- FOOTER --}}
+
+
+        {{-- dd(session('success')) --}}
+        @if(session('success'))
+            <x-mary-toast type="success" title="Video uploaded successfully" />
+        @elseif(session('error'))
+            <x-mary-toast type="error" title="Video upload failed" />
+        @endif
+
+
 </body>
 </html>

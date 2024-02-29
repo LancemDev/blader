@@ -11,9 +11,9 @@ class Video extends Model
     protected $fillable=[
         'title',
         'description',
-        'thumbnail_path',
         'original_file_path',
-        'live_at',
+        'thumbnail_path',
+        'user_id',
         'tags',
     ];
 }

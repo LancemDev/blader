@@ -25,6 +25,7 @@ class VideoController extends Controller
             'thumbnail_path' => $thumbnail_path,
             'user_id' => $user_id,
             'tags' => $request->tags,
+            
         ]);
 
         if ($video) {

@@ -14,18 +14,19 @@
 
     {{-- HEADER --}}
     @if($user = auth()->user())
-    <x-mary-list-item :item="$user" sub-value="username" no-separator no-hover class="ml-3" style="font-size: 1.5em; text-align: right;"></x-mary-list-item>
+        <x-mary-list-item :item="$user" sub-value="username" no-separator no-hover class="ml-3" style="font-size: 1.5em; text-align: right;"></x-mary-list-item>
     @endif
 
-        <x-mary-header separator progress-indicator>
-            <x-slot:brand>
-                <x-mary-icon name="o-envelope" class="p-5 pt-3" />
-            </x-slot:brand>
-            
-            <x-slot:actions>
-                <x-mary-button label="Upload Video" onclick="modal17.showModal()" @click="$wire.drawer = true" responsive icon="o-funnel" class="btn-primary" />
-            </x-slot:actions>
-        </x-mary-header>
+    <x-mary-header separator progress-indicator>
+        <x-slot:brand>
+            <x-mary-icon name="o-envelope" class="p-5 pt-3" />
+        </x-slot:brand>
+        
+        <x-slot:actions>
+            <x-mary-button label="Search bar" responsive class="btn-secondary" />
+            <x-mary-button label="Upload Video" onclick="modal17.showModal()" @click="$wire.drawer = true" responsive icon="o-funnel" class="btn-primary" />
+        </x-slot:actions>
+    </x-mary-header>
   
 
 

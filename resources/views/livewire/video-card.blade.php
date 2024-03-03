@@ -4,7 +4,7 @@
             @foreach ($videos as $video)
                 <div class="col rounded overflow-hidden shadow-sm">
                     @if ($video->thumbnail_url)
-                        <img src="{{ asset('storage/thumbnails/' . $video->thumbnail_url) }}" class="w-full h-48 object-cover" alt="{{ $video->title }} Thumbnail">
+                        <<img src="{{ asset('storage/thumbnails/' . $video->thumbnail_url) }}" class="w-full h-48 object-cover" alt="{{ $video->title }} Thumbnail">
                     @else
                         <img src="{{ asset('thumbnails/placeholder.jpg') }}" class="w-full h-48 object-cover" alt="Placeholder Thumbnail">
                     @endif

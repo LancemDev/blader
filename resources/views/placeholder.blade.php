@@ -50,3 +50,32 @@ public function uploadForm()
 
         $this->emit('toast', 'Video uploaded successfully');
     }
+
+
+
+
+
+
+
+
+
+?>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    {{-- Be like water. --}}
+    
+    <x-mary-card title="{{ $title }}">
+        {{ $Description }}
+    
+        <x-slot:figure>
+            <img src="https://picsum.photos/500/200" />
+        </x-slot:figure>
+        <x-slot:menu>
+            <x-mary-button icon="o-share" class="btn-circle btn-sm" />
+            <x-mary-icon name="o-heart" class="cursor-pointer" />
+        </x-slot:menu>
+        <x-slot:actions>
+            <x-mary-button label="Ok" class="btn-primary" />
+        </x-slot:actions>
+    </x-mary-card>
+</div>

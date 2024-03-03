@@ -23,7 +23,10 @@
 
                 <x-mary-button label="Upload Video" onclick="modal17.showModal()" responsive icon="fas.cloud" class="btn-primary" />
                 @auth
-                    <span class="mr-10 ml-8">{{ Auth::user()->name }}</span>
+                    <div class="flex items-center space-x-2 mr-10 ml-10">
+                        <span>{{ Auth::user()->name }}</span>
+                        <x-mary-icon name="m-chevron-right" class="cursor-pointer" />
+                    </div>
                 @endauth
 
             </x-slot:actions>
@@ -52,9 +55,7 @@
                 <x-mary-menu-item title="Home" link="/home" icon="o-home" />
                 <x-mary-menu-item title="Trending" link="/trending" icon="o-fire" />
                 <x-mary-menu-item title="Recommendations" link="/recommendations" icon="o-star" />
-                <x-mary-menu-sub title="More" icon="o-cog-6-tooth">
-                    <x-mary-menu-item title="AI Assistant" onclick="modal20.showModal()" icon="o-star" />
-                    <x-mary-menu-item title="theme" icon="o-moon" @click="$dispatch('toggle-theme')" />
+                <x-mary-menu-sub title="More" icon="o-cog-6-tooth"><x-mary-menu-item title="theme" icon="o-moon" @click="$dispatch('toggle-theme')" />
                     @auth
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

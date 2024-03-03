@@ -23,7 +23,7 @@
             </x-slot:brand>
             
             <x-slot:actions>
-                <x-mary-button label="Upload Video" onclick="modal17.showModal()" @click="$wire.drawer = true" responsive icon="fas.cloud" class="btn-primary" />
+                <x-mary-button label="Upload Video" onclick="modal17.showModal()" @click="$wire.drawer = true" responsive icon="" class="btn-primary" />
             </x-slot:actions>
         </x-mary-header>
   

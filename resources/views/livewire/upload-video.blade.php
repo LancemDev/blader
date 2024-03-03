@@ -16,7 +16,7 @@
             <br />
             <x-mary-input wire:model="description" name="description" label="Description" placeholder="Description" />
             <br />
-            <x-mary-tags wire:model="tags" name="tags" label="Click ot enter tag(s)" hint="Hint: Hit enter to create a new tag" />
+            <x-mary-tags wire:model="tags" name="tags" label="Click or enter tag(s)" hint="Hint: Hit enter to create a new tag" />
             <br />
         </form>
     </x-mary-modal>

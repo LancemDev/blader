@@ -20,10 +20,12 @@
             </x-slot:brand>
             
             <x-slot:actions>
+
                 <x-mary-button label="Upload Video" onclick="modal17.showModal()" responsive icon="fas.cloud" class="btn-primary" />
                 @auth
                     <span class="mr-10 ml-8">{{ Auth::user()->name }}</span>
                 @endauth
+
             </x-slot:actions>
         </x-mary-header>
 </head>

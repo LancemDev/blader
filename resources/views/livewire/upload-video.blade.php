@@ -10,7 +10,9 @@
 
             <x-mary-input  name="title" label="Title" placeholder="Title" />
             <br />
-            <x-mary-input  name="description" label="Description" placeholder="Description" />
+            <x-mary-input wire:model="description" name="description" label="Description" placeholder="Description" />
+            <br />
+            <x-mary-tags wire:model="tags" name="tags" label="Click or enter tag(s)" hint="Hint: Hit enter to create a new tag" />
             <br />
             {{-- <x-mary-input  name="tags" label="Tags" placeholder="Tags" /> --}}
         </form>

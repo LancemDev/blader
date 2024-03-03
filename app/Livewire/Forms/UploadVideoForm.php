@@ -9,18 +9,15 @@ use Livewire\Attributes\Rule;
 
 class UploadVideoForm extends Form
 {
-    public $title = '';
-    public $description = '';
-    public array $tags = [];
+    public $photo;
+    public $file;
+    public $title;
+    public $description;
+    public array $tags = ['tech', 'gaming', 'art'];
 
 
     public function submit()
     {
-        Video::create([
-            'title' => $this->title,
-            'description' => $this->description,
-            'tags' => $this->tags,
-        ]);
         // dd($this->title, $this->description, $this->video, $this->thumbnail, $this->tags, $this->original_file_path, $this->thumbnail_path);
     }
 

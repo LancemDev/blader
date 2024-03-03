@@ -1,24 +1,19 @@
 <?php
-namespace App\Http\Livewire;
+
+namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use App\Models\Video;
-use App\Livewire\Forms\UploadVideoForm as Form;
-// use Mary\Traits\Toast;
+use App\Livewire\Forms\UploadVideoForm;
 
 class UploadVideo extends Component
 {
     use WithFileUploads;
-
-    public Form $form;
-
-    public function submitForm()
+    public UploadVideoForm $form;
+    public function mount()
     {
-        $this->validate();
-        $this->form->submit();
+        // $this->form = new UploadVideoForm(w,r);
     }
-
     public function render()
     {
         return view('livewire.upload-video');

@@ -3,11 +3,12 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\Video;
 
-class UploadTest extends Component
+class VideoCard extends Component
 {
     public function render()
     {
-        return view('livewire.upload-test');
+        return view('livewire.video-card');
     }
 }

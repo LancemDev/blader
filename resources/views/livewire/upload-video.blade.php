@@ -2,22 +2,21 @@
     <x-mary-modal id="modal17">
         <form id="uploadForm" wire:submit="submitForm" action="{{ route('video.upload') }}" method="POST" enctype="multipart/form-data">
         @csrf
-            <x-slot:actions>
-                <x-mary-button label="Cancel" onclick="modal17.close()" class="btn-ghost" />
-                <button type="submit" name="submit" value="Submit" class="btn-ghost rounded" onclick="document.getElementById('uploadForm').submit()">Submit</button>
-           </x-slot:actions>
-           <x-mary-file wire:model="photo2" name="thumbnail" accept="image/png" crop-after-change>
-                <img src="{{ $user->avatar ?? asset('thumbnails/placeholder.jpeg') }}" class="h-40 rounded-lg" />
+           <x-mary-file name="thumbnail" accept="image/png" crop-after-change>
+                <img src="{{ $user->avatar ?? asset('thumbnails/placeholder.jpg') }}" class="h-40 rounded-lg" />
             </x-mary-file>
 
-           <x-mary-file wire:model="file" name="video" label="Receipt" hint="Click to upload video" />
+           <x-mary-file name="video" label="Receipt" hint="Click to upload video" />
 
-            <x-mary-input wire:model="title" name="title" label="Title" placeholder="Title" />
+            <x-mary-input  name="title" label="Title" placeholder="Title" />
             <br />
-            <x-mary-input wire:model="description" name="description" label="Description" placeholder="Description" />
+            <x-mary-input  name="description" label="Description" placeholder="Description" />
             <br />
-            <x-mary-tags wire:model="tags" name="tags" label="Click ot enter tag(s)" hint="Hint: Hit enter to create a new tag" />
-            <br />
+            {{-- <x-mary-input  name="tags" label="Tags" placeholder="Tags" /> --}}
         </form>
+        <x-slot:actions>
+            <x-mary-button label="Cancel" onclick="modal17.close()" class="btn-ghost" />
+            <button type="submit" name="submit" value="Submit" class="btn-ghost rounded" onclick="document.getElementById('uploadForm').submit()">Submit</button>
+        </x-slot:actions>
     </x-mary-modal>
 </div>

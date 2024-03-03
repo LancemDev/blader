@@ -10,7 +10,7 @@
             <div id="chat-container" class="hidden fixed bottom-16 right-4 w-96">
                 <div class="bg-sky-900 shadow-md rounded-lg max-w-lg w-full">
                     <div class="p-4 border-b bg-sky-950 text-white rounded-t-lg flex justify-between items-center">
-                        <p class="text-lg font-semibold">Admin Bot</p>
+                        <p class="text-lg font-semibold">Blader Bot</p>
                         <button id="close-chat" class="text-sky-900 hover:text-sky-950 focus:outline-none focus:text-gray-400">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -30,14 +30,17 @@
                 </div>
             </div>
             <script>
-                const chatbox = document.getElementById("chatbox");
+                // Check if chatbox is already declared
+                const chatbox = window.chatbox || document.getElementById("chatbox");
+                
                 const chatContainer = document.getElementById("chat-container");
                 const userInput = document.getElementById("user-input");
                 const sendButton = document.getElementById("send-button");
                 const openChatButton = document.getElementById("open-chat");
                 const closeChatButton = document.getElementById("close-chat");
 
-                let isChatboxOpen = true; // Set the initial state to open
+                // Check if isChatboxOpen is already declared
+                window.isChatboxOpen = window.isChatboxOpen || false;
 
                 // Function to toggle the chatbox visibility
                 function toggleChatbox() {
@@ -124,7 +127,7 @@
                 }
 
                 // Automatically open the chatbox on page load
-                toggleChatbox();
+                // toggleChatbox();
 
             </script>
         </div>

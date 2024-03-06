@@ -21,7 +21,7 @@
             
             <x-slot:actions>
 
-                <x-mary-button label="Upload Video" onclick="modal17.showModal()" responsive icon="fas.cloud" class="btn-primary" />
+                <x-mary-button label="Upload Video" onclick="modal17.showModal()" responsive icon="" class="btn-primary" />
                 @auth
                     <div class="flex items-center space-x-2 mr-10 ml-10">
                         <span>{{ Auth::user()->name }}</span>

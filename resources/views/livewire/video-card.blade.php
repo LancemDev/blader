@@ -12,7 +12,7 @@
                     <div class="p-6 bg-white">
                         <h5 class="card-title text-xl font-bold leading-tight">{{ $video->title }}</h5>
                         <p class="card-text text-gray-700">{{ Str::limit($video->description, 100) }}</p>
-                        <a href="{{ $video->video_url }}" target="_blank" class="px-3 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-md">Watch Video</a>
+                        <a href="{{'storage/'. $video->original_file_path }}" target="_blank" class="px-3 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-md">Watch Video</a>
                     </div>
                 </div>
             @endforeach

@@ -5,7 +5,7 @@
                 <div class="col rounded overflow-hidden shadow-sm border border-gray-200 m-2">
                     @if ($video->thumbnail_path)
                         <!-- Added an ID to the image for JavaScript -->
-                        <img src="{{ asset('storage/'.$video->thumbnail_path) }}" class="w-full h-48 object-cover video-thumbnail" alt="{{ $video->title }} Thumbnail" data-video="{{ asset('storage/'.$video->original_file_path) }}">
+                        <img src="{{ asset($video->thumbnail_path) }}" class="w-full h-48 object-cover video-thumbnail" alt="{{ $video->title }} Thumbnail" data-video="{{ asset($video->original_file_path) }}">
                     @else
                         <img src="{{ asset('thumbnails/placeholder.jpg') }}" class="w-full h-48 object-cover video-thumbnail" alt="Placeholder Thumbnail">
                     @endif

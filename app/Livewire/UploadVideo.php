@@ -10,6 +10,11 @@ class UploadVideo extends Component
 {
     use WithFileUploads;
     public UploadVideoForm $form;
+    public function submitForm()
+    {
+        $this->form->submit();
+    
+    }
     public function mount()
     {
         // $this->form = new UploadVideoForm(w,r);

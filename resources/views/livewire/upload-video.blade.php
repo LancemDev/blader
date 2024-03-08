@@ -19,9 +19,5 @@
         </x-slot:actions>
         </x-mary-form>
     </x-mary-modal>
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
+
 </div>

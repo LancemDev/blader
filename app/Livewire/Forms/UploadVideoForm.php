@@ -45,7 +45,10 @@ class UploadVideoForm extends Form
         ]);
         // dd($this->all());
 
-        // $this->success('Video uploaded successfully!'); // Show a success toast message
+        $this->toast(
+            type: 'success', 
+            title: 'Video uploaded successfully',
+        ); // Show a success toast message
     }
 
 }

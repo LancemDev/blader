@@ -10,6 +10,7 @@ use App\Livewire\Trending;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\MessageController;
 use App\Livewire\CreateVideo;
+use App\Livewire\ViewVideo;
 // use App\Livewire\UploadArea;
 
 /*
@@ -36,6 +37,7 @@ Route::get('/dashboard', Home::class)->middleware(['auth', 'verified'])->name('d
 Route::get('/trending', Trending::class)->middleware(['auth', 'verified'])->name('trending');
 Route::get('/recommendations', Recommendations::class)->middleware(['auth', 'verified'])->name('recommendations');
 Route::post('/video/upload', [VideoController::class, 'store'])->middleware(['auth', 'verified'])->name('video.upload');
+// Route::get('/video/{id}', ViewVideo::class)->middleware(['auth', 'verified'])->name('video.show');
 
 // Route::get('/dashboard', Counter::class);
 

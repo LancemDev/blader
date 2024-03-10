@@ -8,6 +8,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -15,22 +16,22 @@
     {{-- HEADER --}}
 
         <x-mary-header separator progress-indicator>
-            <x-slot:brand>
-                <!-- Brand goes here -->
-            </x-slot:brand>
-            
+       
             <x-slot:actions>
-
-                <x-mary-button label="Upload Video" onclick="modal17.showModal()" responsive icon="" class="btn-primary" />
+            
+            <x-mary-button label="Upload Video" onclick="modal17.showModal()" responsive icon="o-cloud" class="btn-primary mt-5" />
                 @auth
-                    <div class="flex items-center space-x-2 mr-10 ml-10">
+                    <div class="flex items-center space-x-2 ml-10 text-20px mt-5">
                         <span>{{ Auth::user()->name }}</span>
-                        <x-mary-icon name="m-chevron-right" class="cursor-pointer" />
                     </div>
                 @endauth
 
             </x-slot:actions>
         </x-mary-header>
+
+    <!-- Image placed here -->
+    <img class="logo-img hidden md:block absolute top-1.5 left-10 w-20 h-auto z-50 rounded-full" src="thumbnails/Blader.png" alt="Logo">
+
 </head>
 <body class="min-h-screen font-sans antialiased bg-base-200/50 dark:bg-base-200">
 

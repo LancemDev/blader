@@ -18,6 +18,7 @@
         <x-mary-header separator progress-indicator>
        
             <x-slot:actions>
+                <x-mary-button label="Upload Video" onclick="modal17.showModal()" class="btn-primary" />
                 @auth
                     <div class="flex items-center space-x-2 ml-10 text-20px mt-5">
                         <span>{{ Auth::user()->name }}</span>

@@ -24,9 +24,7 @@ use App\Livewire\ViewVideo;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', Home::class)->middleware(['auth', 'verified'])->name('home');
 
 Route::get('/counter', Counter::class);
 Route::post('/message', [MessageController::class, 'sendMessage']);

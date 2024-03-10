@@ -1,4 +1,13 @@
 <div class="container">
+    <x-mary-button label="Search" onclick="modal21.showModal()" class="btn-success" />
+    <x-mary-modal id="modal21" class="backdrop-blur">
+        <x-mary-form wire:submit="getVideosProperty">
+            <x-mary-input wire:model="searchQuery" name="search" label="Search" placeholder="Search" />
+            <x-slot:actions>
+                <x-mary-button label="Search" type="submit" class="btn-primary" />
+            </x-slot:actions>
+        </x-mary-form>
+    </x-mary-modal>
     @if ($videos->count())
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             @foreach ($videos as $video)
@@ -19,8 +28,6 @@
                     </div>
                 </div>
                 </div>
-                
-                <!-- Card for title and description -->
                 
             @endforeach
         </div>

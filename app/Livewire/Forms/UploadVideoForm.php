@@ -15,7 +15,7 @@ class UploadVideoForm extends Form
     public $file;
     public $title;
     public $description;
-    public array $tags = ['tech', 'gaming', 'art'];
+    public array $tags = [];
 
     public function rules(): array
     {
@@ -44,11 +44,7 @@ class UploadVideoForm extends Form
             'user_id' => auth()->id(),
         ]);
         // dd($this->all());
-
-        $this->toast(
-            type: 'success', 
-            title: 'Video uploaded successfully',
-        ); // Show a success toast message
     }
+    
 
 }

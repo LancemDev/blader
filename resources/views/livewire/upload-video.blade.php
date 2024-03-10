@@ -1,7 +1,7 @@
 <div wire:ignore>
-    <x-mary-modal id="modal17" class="backdrop-blur">
-        <x-mary-form id="uploadForm" wire:submit="submitForm" >
-           <x-mary-file wire:model="form.photo" crop-after-change>
+    <x-mary-modal id="modal17">
+        <x-mary-form id="uploadForm" wire:submit="submitForm">
+           <x-mary-file label="Upload Thumbnail" wire:model="form.photo" crop-after-change>
                 <img src="{{ $user->avatar ?? asset('thumbnails/placeholder.jpg') }}" class="h-40 rounded-lg" />
             </x-mary-file>
 
@@ -16,6 +16,9 @@
             <x-slot:actions>
                 <x-mary-button label="Cancel" onclick="modal17.close()" class="btn-ghost" />
                 <x-mary-button type="submit" label="Submit" class="btn-primary" />  
+                <div wire:loading>
+                    <x-mary-toast />
+                </div>
         </x-slot:actions>
         </x-mary-form>
     </x-mary-modal>

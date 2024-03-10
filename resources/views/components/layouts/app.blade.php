@@ -20,7 +20,7 @@
             </x-slot:brand>
             
             <x-slot:actions>
-
+                
                 <x-mary-button label="Upload Video" onclick="modal17.showModal()" responsive icon="" class="btn-primary" />
                 @auth
                     <div class="flex items-center space-x-2 mr-10 ml-10">
@@ -53,8 +53,6 @@
 
                 {{-- Menu items --}}
                 <x-mary-menu-item title="Home" link="/home" icon="o-home" />
-                <x-mary-menu-item title="Trending" link="/trending" icon="o-fire" />
-                <x-mary-menu-item title="Recommendations" link="/recommendations" icon="o-star" />
                 <x-mary-menu-sub title="More" icon="o-cog-6-tooth"><x-mary-menu-item title="theme" icon="o-moon" @click="$dispatch('toggle-theme')" />
                     @auth
                         <form method="POST" action="{{ route('logout') }}">

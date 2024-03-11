@@ -39,7 +39,7 @@ https://vimeo.com/922141269?share=copy
 - PHP >= 7.3
 - Composer
 - Node.js & npm/Yarn
-- MySQL
+- MySQL or any other database supported by Laravel
 
 ## Installation
 

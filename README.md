@@ -1,7 +1,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/LancemDev/Blader">
-    <!-- <img src="images/logo.png" alt="Logo" width="80" height="80"> -->
+    <img src="storage/app/public/images/home.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">BLADER</h3>

@@ -1,13 +1,12 @@
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/LancemDev/Blader">
+    <!-- <img src="images/logo.png" alt="Logo" width="80" height="80"> -->
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">BLADER</h3>
 
   <p align="center">
-    BLADER
     <br />
     <a href="https://github.com/LancemDev/blader"><strong>Explore the docs »</strong></a>
     <br />
@@ -17,6 +16,9 @@
     <a href="https://github.com/LancemDev/blader/issues">Report Bug</a>
     ·
     <a href="https://github.com/LancemDev/blader/issues">Request Feature</a>
+    .
+    <a href="https://blader-lance.koyeb.app">Live Demo</a>
+
   </p>
 </div>
 

@@ -8,6 +8,7 @@ use App\Models\Video;
 
 class Home extends Component
 {
+    public $searchQuery = '';
     public $playing = false;
 
     public function toggleVideo()
